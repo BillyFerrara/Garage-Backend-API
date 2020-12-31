@@ -15,9 +15,10 @@ class DriversController < ApplicationController
 
   # POST /drivers
   def create
-    @driver = Driver.new(driver_params)
+    # byebug
+    driver = Driver.new(driver_params)
 
-    if @driver.save
+    if driver.save
       render json: @driver, status: :created, location: @driver
     else
       render json: @driver.errors, status: :unprocessable_entity
@@ -49,3 +50,4 @@ class DriversController < ApplicationController
       params.require(:driver).permit(:name)
     end
 end
+
